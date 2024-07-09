@@ -1,9 +1,18 @@
 import {Button, Input, Layout, Text} from '@ui-kitten/components';
 import {useWindowDimensions} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import { MyIcon } from '../../components/ui/MyIcon';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParams } from '../../navigation/StackNavigator';
+import { API_URL, STAGE } from '@env';
 
-export const LoginScreen = () => {
+interface Props extends StackScreenProps<RootStackParams, 'LoginScreen'> {}
+
+export const LoginScreen = ({ navigation }: Props) => {
   const {height} = useWindowDimensions();
+
+  // Imprimir una variable de entorno
+  console.log({apiUrl: API_URL, stage: STAGE});
 
   return (
     <Layout style={{flex: 1}}>
@@ -16,12 +25,14 @@ export const LoginScreen = () => {
         {/* Inputs */}
         <Layout style={{marginTop: 20}}>
           <Input
+          accessoryLeft={ <MyIcon name='email-outline'/> }
             placeholder="Correo electrónico"
             keyboardType="email-address"
             autoCapitalize="none"
             style={{marginBottom: 10}}
           />
           <Input
+            accessoryLeft={ <MyIcon name='lock-outline'/> }
             placeholder="Contraseña"
             autoCapitalize="none"
             secureTextEntry
@@ -30,11 +41,12 @@ export const LoginScreen = () => {
         </Layout>
 
         {/* Space */}
-        <Layout style={{height: 20}} />
+        <Layout style={{height: 10}} />
 
         {/* BUtton */}
         <Layout>
           <Button
+          accessoryRight={ <MyIcon name='arrow-forward-outline' white/> }
             onPress={() => {}}
             // appearance='ghost'
           >
@@ -52,7 +64,7 @@ export const LoginScreen = () => {
             justifyContent: 'center',
           }}>
           <Text>¿No tienes una cuenta?</Text>
-          <Text status="primary" category="s1" onPress={() => {}}>
+          <Text status="primary" category="s1" onPress={() => navigation.navigate("RegisterScreen")}>
             {' '}
             {''} Crea una {''}{' '}
           </Text>
