@@ -1,6 +1,9 @@
 import {tesloApi} from '../../config/api/tesloApi';
 import {User} from '../../domain/entities/user';
-import type {AuthResponse} from '../../infrastructure/interfaces/auth.responses';
+import type {
+  AuthResponse,
+  RegisterResponse,
+} from '../../infrastructure/interfaces/auth.responses';
 
 const returnUserToken = (data: AuthResponse) => {
   const user: User = {
@@ -27,6 +30,27 @@ export const authLogin = async (email: string, password: string) => {
     });
 
     return returnUserToken(data);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const authRegister = async (
+  email: string,
+  password: string,
+  fullName: string,
+) => {
+  email = email.toLocaleLowerCase();
+
+  try {
+    await tesloApi.post<RegisterResponse>('/auth/register', {
+      email,
+      password,
+      fullName,
+    });
+
+    return true;
   } catch (error) {
     console.log(error);
     return null;
