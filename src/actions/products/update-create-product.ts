@@ -16,14 +16,41 @@ export const updateCreateProduct = (product: Partial<Product>) => {
 
 }
 
-const prepareImages = (images: string[]) => {
+const prepareImages = async (images: string[]) => {
 
     //TODO: revisar los FILES
+    const fileImages = images.filter(image => image.startsWith('file://'));
+    const currentImages = images.filter(image => !image.startsWith('file://'));
 
-    return images.map(
+    if (fileImages.length > 0) {
+        const uploadPromises = fileImages.map(uploadImage);
+        const uploadedImages = await Promise.all(uploadPromises);
+        currentImages.push(...uploadedImages);
+    }
+    
+
+    return currentImages.map(
         image => image.split('/').pop()
     )
 
+}
+
+const uploadImage = async (image: string) => {
+
+    const formData = new FormData();
+    formData.append('file', {
+        uri: image,
+        type: 'image/jpeg',
+        name: image.split('/').pop()
+    });
+
+    const { data } = await tesloApi.post<{image: string}>('/files/product', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+
+    return data.image;
 }
 
 
@@ -36,7 +63,7 @@ const updateProduct = async (product: Partial<Product>) => {
 
     try {
 
-        const checkedImages = prepareImages(images);
+        const checkedImages = await prepareImages(images);
     
         const { data } = await tesloApi.patch(`/products/${id}`, {
             images: checkedImages,
@@ -60,7 +87,7 @@ const createProduct = async (product: Partial<Product>): Promise<Product> => {
 
     try {
 
-        const checkedImages = prepareImages(images);
+        const checkedImages = await prepareImages(images);
     
         const { data } = await tesloApi.post(`/products/`, {
             images: checkedImages,

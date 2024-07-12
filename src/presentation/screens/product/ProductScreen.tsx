@@ -70,7 +70,7 @@ export const ProductScreen = ({route}: Props) => {
 
 
           }}
-          rightActionIcon="camera-outline"
+          rightActionIcon="image-outline"
         >
           {/* Imágenes del producto */}
           <ScrollView style={{flex: 1}}>
