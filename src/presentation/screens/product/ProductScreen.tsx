@@ -20,6 +20,7 @@ import {Formik} from 'formik';
 import {Alert} from 'react-native';
 import {ProductImages} from '../../components/products/ProductImages';
 import {genders, sizes} from '../../../config/constants/constants';
+import { CameraAdapter } from '../../../config/adapters/camera-adapter';
 
 interface Props extends StackScreenProps<RootStackParams, 'ProductScreen'> {}
 
@@ -61,7 +62,16 @@ export const ProductScreen = ({route}: Props) => {
       {({handleChange, handleSubmit, values, errors, setFieldValue}) => (
         <MainLayout
           title={values.title}
-          subtitle={`Precio: $${values.price}.00`}>
+          subtitle={`Precio: $${values.price}.00`}
+          rightAction={async () => {
+
+            const photos = await CameraAdapter.getPicturesFromLibrary();
+            setFieldValue('images', [...values.images, ...photos]);	
+
+
+          }}
+          rightActionIcon="camera-outline"
+        >
           {/* Imágenes del producto */}
           <ScrollView style={{flex: 1}}>
             <Layout
