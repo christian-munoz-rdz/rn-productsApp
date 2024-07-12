@@ -1,79 +1,117 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Gestor de E-commerce de tienda de ropa
 
-# Getting Started
+### indice 
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+- [Descripción](#descripción)
+- [Tecnologías](#tecnologías)
+- [Pantalla de inicio](#pantalla-de-inicio)
+- [Detalles de Producto](#detalles-de-producto)
+- [Edición de Producto](#edición-de-producto)
+- [Agregar Imágenes a un Producto](#agregar-imágenes-a-un-producto)
+- [Creación de Producto](#creación-de-producto)
 
-## Step 1: Start the Metro Server
+## Descripción
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Este proyecto es una aplicación móvil desarrollada con [React Native](https://reactnative.dev/) que permite visualizar y editar el catálogo de un e-commerce de una tienda de ropa. La aplicación consume un backend local y permite realizar las siguientes acciones:
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- Visualizar la lista de productos disponibles.
+- Visualizar los detalles de un producto tales como: nombre, precio, descripción, stock, tallas disponibles, género y las imágenes del producto.
+- Editar todos los campos de un producto y guardar los cambios  a través de un botón.
+- Agregar imágenes disponibles en la galería del dispositivo a un producto.
+- Crear un nuevo producto con todos los campos necesarios y agregar imágenes disponibles en la galería del dispositivo.
 
-```bash
-# using npm
-npm start
+## Tecnologías
 
-# OR using Yarn
-yarn start
-```
+<div style="display: flex; justify-content: center;">
+<table>
+   <thead>
+      <tr>
+         <th>Tecnologías</th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><a href="https://reactnative.dev/">React Native</a></td>
+         <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://reactnavigation.org/">React Navigation</a></td>
+         <td><img src="https://avatars.githubusercontent.com/u/29647600?s=280&v=4" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://akveo.github.io/react-native-ui-kitten/">UI Kitten 5.3</a></td>
+         <td><img src="https://akveo.github.io/react-native-ui-kitten/docs/assets/playground-build/static/media/icon.36f92bd4.png" height=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://axios-http.com/">Axios</a></td>
+         <td><img src="https://axios-http.com/assets/logo.svg" width=120></td>
+      </tr>
+      <tr>
+         <td><a href="https://tanstack.com/query/latest">TanStack Query</a></td>
+         <td><img src="https://tanstack.com/_build/assets/logo-color-600w-Bx4vtR8J.png" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://www.typescriptlang.org/">TypeScript</a></td>
+         <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://formik.org/">Formik</a></td>
+         <td><img src="https://static-00.iconduck.com/assets.00/formik-icon-1024x1024-deyd4zqw.png" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://zustand-demo.pmnd.rs/">Zustand</a></td>
+         <td><img src="https://repository-images.githubusercontent.com/180328715/fca49300-e7f1-11ea-9f51-cfd949b31560" width=100></td>
+      </tr>
+   </tbody>
+</table>
+</div>
 
-## Step 2: Start your Application
+## Pantalla de inicio
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+La pantalla de inicio muestra las tarjetas de los productos disponibles en el catálogo en dos columnas. Cada tarjeta muestra la imagen del producto y su nombre.
 
-### For Android
+<div style="display: flex; justify-content: space-between;"> 
+   <img src="screenshots/home_screen01.png" height="400">
+   <img src="screenshots/home_screen02.png" height="400">
+   <img src="screenshots/home_screen03.png" height="400">
+</div>
 
-```bash
-# using npm
-npm run android
+## Detalles de Producto
 
-# OR using Yarn
-yarn android
-```
+Esta pantalla muestra los detalles de un producto en específico. Todo está distribuido en una sola columna y sigue los estilos definidos por el tema de UI Kitten. 
 
-### For iOS
+<div style="display: flex; justify-content: space-between;"> 
+   <img src="screenshots/details01.png" height="400">
+   <img src="screenshots/details02.png" height="400">
+   <img src="screenshots/details03.png" height="400">
+</div>
 
-```bash
-# using npm
-npm run ios
+## Edición de Producto
 
-# OR using Yarn
-yarn ios
-```
+Toda la información de un producto puede ser editada cuando entras a ver sus detalles, solamente debes presionar el botón de guardar para que los cambios se guarden en el backend y la información sea actualizada.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+<div style="display: flex; justify-content: space-between;"> 
+   <img src="screenshots/edicion01.png" height="400">
+   <img src="screenshots/edicion02.png" height="400">
+   <img src="screenshots/edicion03.png" height="400">
+</div>
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Agregar Imágenes a un Producto
 
-## Step 3: Modifying your App
+La aplicación permite agregar imágenes a un producto desde la galería del dispositivo. Al presionar el ícono de foto en la parte superior derecha de la pantalla de detalles, se abre la galería del dispositivo y se pueden seleccionar hasta 10 imágenes. 
 
-Now that you have successfully run the app, let's modify it.
+<div style="display: flex; justify-content: center; gap: 100px;"> 
+   <img src="screenshots/images01.png" height="400">
+   <img src="screenshots/images02.png" height="400">
+</div>
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Creación de Producto
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Al presionar el FAB (Floating Action Button) en la pantalla de inicio, se abre una pantalla que permite crear un nuevo producto. Todos los campos son requeridos y se pueden agregar hasta 10 imágenes desde la galería del dispositivo. Al final el producto se guarda en el backend y se muestra en la pantalla de inicio.
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+<div style="display: flex; justify-content: space-between;"> 
+   <img src="screenshots/create01.png" height="400">
+   <img src="screenshots/create02.png" height="400">
+   <img src="screenshots/create03.png" height="400">
+</div>
